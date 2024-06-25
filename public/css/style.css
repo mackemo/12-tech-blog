@@ -1,0 +1,39 @@
+/* font imported from google fonts */
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+:root {
+    --char:   #3a3a3a;
+}
+
+header {
+    color: white;
+    background-color: var(--char);
+    padding: 10px;
+}
+
+/* 'Tech Blog' */
+.title {
+    font-size: 50px;
+    font-weight: 200;
+    margin-left: 100px;
+    width: 50%;
+    color: white;
+}
+
+/* nav links */
+.nav-link {
+    color: white;
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: 200;
+    margin: 40px 50px 0 0;
+}
+
+.nav-link:hover {
+    background-color: white;
+    color: var(--char);
+}
+
+
