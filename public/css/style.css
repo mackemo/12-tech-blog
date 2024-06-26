@@ -37,11 +37,11 @@ header {
 }
 
 /* login form */
-.login {
+.title2 {
     margin: 50px 0 50px 0;
     color: var(--char);
 }
 
-form {
+form, .your-posts {
     padding: 30px;
 }
