@@ -36,4 +36,12 @@ header {
     color: var(--char);
 }
 
+/* login form */
+.login {
+    margin: 50px 0 50px 0;
+    color: var(--char);
+}
 
+form {
+    padding: 30px;
+}
