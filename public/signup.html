@@ -40,39 +40,27 @@
         </div>
     </header>
 
-
-    <!-- your posts -->
-    <main class="your-posts">
+    <!-- login form -->
+    <form>
         <div class="container">
             <div class="row justify-content-center">
-                <h2 class="title2">Your Posts</h2>
-
-                <!-- add post button -->
+                <h2 class="title2">Sign Up</h2>
+                
                 <div class="mb-3">
-                    <a href="/dashboard/create/"><button id="add-post" class="btn btn-light col-md-2">+New Post</button></a>
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username">
                 </div>
 
-                <!-- posts -->
-                <div class="card col-md-8 mb-3">
-                    <h5 class="card-header">Header</h5>
-                    <p class="card-text">Card text with the tech blog post</p>
-                    <p>Date Created</p>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password">
                 </div>
 
+                <button type="submit" class="btn btn-light col-md-6">Login</button>
+                <a class="btn btn-light col-md-6" href="/signup">Sign Up</a>
             </div>
-        </div> 
-    </main>
-
-
-    <!-- footer -->
-    <footer class="container">
-        <div>
-            <p> <a href="#home">Back to Top</a></p>
         </div>
-        <div>
-            <p> The Tech Blog by <a href="https://github.com/mackemo"> Mackenzie Moore</a></p>
-        </div>
-    </footer>
+    </form>
     
 </body>
 

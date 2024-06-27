@@ -30,35 +30,28 @@
                     <!-- {{#if loggedIn}} -->
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link" href="#login">Login</a></li> -->
+                    <li class="nav-item"><a class="nav-link" href="#login">Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="#logout">Logout</a></li>
                     <!-- {{else}} -->
                     <!-- <li class="nav-item"><a class="nav-link" href="#home">Home</a></li> -->
-                    <li class="nav-item"><a class="nav-link" href="#login">Login</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="#login">Login</a></li> -->
                 </ul>
             </nav>
         </div>
     </header>
 
 
-    <!-- your posts -->
-    <main class="your-posts">
+    <!-- content -->
+    <main>
+        <!-- {{{body}}} -->
+         <!-- cards -->
         <div class="container">
             <div class="row justify-content-center">
-                <h2 class="title2">Your Posts</h2>
-
-                <!-- add post button -->
-                <div class="mb-3">
-                    <a href="/dashboard/create/"><button id="add-post" class="btn btn-light col-md-2">+New Post</button></a>
-                </div>
-
-                <!-- posts -->
-                <div class="card col-md-8 mb-3">
+                <div class="card col-md-8 mt-3 mb-3">
                     <h5 class="card-header">Header</h5>
                     <p class="card-text">Card text with the tech blog post</p>
                     <p>Date Created</p>
                 </div>
-
             </div>
         </div> 
     </main>
