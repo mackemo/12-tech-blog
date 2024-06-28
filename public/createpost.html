@@ -41,34 +41,29 @@
     </header>
 
 
-    <!-- your posts -->
-    <main class="your-posts">
+    <!-- create post -->
+    <form>
         <div class="container">
             <div class="row justify-content-center">
-                <h2 class="title2">Your Posts</h2>
+                <h2 class="title2">Create Post</h2>
 
-                <!-- add post button -->
                 <div class="mb-3">
-                    <a href="/dashboard/create/"><button id="create-post" class="btn btn-light col-md-2">+New Post</button></a>
+                    <label for="title" class="title-label">Title:</label>
+                    <textarea class="form-control" name="title" id="title"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="content-label">Text:</label>
+                    <textarea class="form-control" name="content" id="content"></textarea>
                 </div>
 
-                <!-- posts -->
-                <div class="card col-md-8 mb-3">
-                    <h5 class="card-header">Header</h5>
-                    <p class="card-text">Card text with the tech blog post</p>
-                    <p>Date Created</p>
-                </div>
-
+                <button id="add-post" class="btn btn-light col-md-2">+New Post</button></a>
             </div>
-        </div> 
-    </main>
+        </div>
+    </form>
 
 
     <!-- footer -->
     <footer class="container">
-        <div>
-            <p> <a href="#home">Back to Top</a></p>
-        </div>
         <div>
             <p> The Tech Blog by <a href="https://github.com/mackemo"> Mackenzie Moore</a></p>
         </div>
