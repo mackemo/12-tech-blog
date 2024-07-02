@@ -13,11 +13,6 @@ Comment.init(
             autoIncrement: true,
         },
 
-        comment_title: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-
         comment_text: {
             type: DataTypes.TEXT,
             allowNull: false
