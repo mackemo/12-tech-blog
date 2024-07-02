@@ -5,17 +5,14 @@ const { User, Post, Comment } = require('../../models');
 // retrieve all users
 router.get('/', async (req, res) => {
     try {
-        await User.findAll({
+        const userData = await User.findAll({
             attributes: { exclude: ['[password'] }
         })
-        .then(userData => res.json(userData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-    } catch {
-
-    }  
+        
+        res.status(200).json(userData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 module.exports = router;
