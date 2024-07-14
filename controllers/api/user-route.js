@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 
 
-// retrieve all users
+// ----retrieve all users-------------------------
 router.get('/', async (req, res) => {
     try {
         const userData = await User.findAll({
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 });
 
 
-// retrieve single user with corresponding posts
+// retrieve single user with corresponding posts --------------
 router.get('/:id', async (req, res) => {
     try {
         const userData = await User.findByPk(req.params.id, {
@@ -51,5 +51,37 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
+// ------user login---------------------------------------------
+router.post('/login', async (req, res) => {
+    try {
+        const userData = await User.findOne({ where: { email: req.body.email } });
+        
+        if (!userData) {
+            res.status(400).json({ message: 'No user with that email!' });
+            return;
+        }
+  
+        const validPassword = await userData.checkPassword(req.body.password);
+  
+        if (!validPassword) {
+            res.status(400).json({ message: 'Incorrect password!' });
+            return;
+        }
+  
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.username = userData.username;
+            req.session.logged_in = true;
+        
+        res.json({ user: userData, message: 'You are now logged in!' });
+    });
+  
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
 
 module.exports = router;
