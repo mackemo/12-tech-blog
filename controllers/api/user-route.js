@@ -53,6 +53,36 @@ router.get('/:id', async (req, res) => {
 });
 
 
+// -----user signup-----------------------------
+router.post('/signup', async (req, res) => {
+    try {
+        const existingUser = await User.findOne({ where: { email: req.body.email } });
+
+        if (existingUser) {
+            return res.status(400).json({ message: 'User with this email already exists' });
+        }
+
+        const newUser = await User.create({
+            username: req.body.username,
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            email: req.body.email,
+            password: req.body.password,
+        });
+
+        req.session.save(() => {
+            req.session.loggedIn = true;
+            req.session.user_id = newUser.id;
+            req.session.username = newUser.username;
+            res.status(200).json(newUser);
+        });
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
 // ------user login---------------------------------------------
 router.post('/login', async (req, res) => {
     try {
@@ -95,7 +125,6 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 })
-
 
 
 module.exports = router;
