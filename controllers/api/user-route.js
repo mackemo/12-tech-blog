@@ -93,11 +93,11 @@ router.post('/signup', async (req, res) => {
 // ------user login---------------------------------------------
 router.post('/login', async (req, res) => {
     try {
-        // find user by email
-        const userData = await User.findOne({ where: { email: req.body.email } });
+        // find user by username
+        const userData = await User.findOne({ where: { username: req.body.username } });
         
         if (!userData) {
-            res.status(400).json({ message: 'No user with that email!' });
+            res.status(400).json({ message: 'No user with that username!' });
             return;
         }
         
