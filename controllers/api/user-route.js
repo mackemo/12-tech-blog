@@ -127,4 +127,22 @@ router.post('/logout', (req, res) => {
 })
 
 
+// -----delete user------------------
+router.delete('/:id', async (req, res) => {
+    const userId = req.session.user_id;
+    
+    try {
+        await User.destroy({
+            where: {
+                id: userId
+            }
+        });
+
+        res.status(200).json("Applicant deleted!");
+    } catch (err) {
+        res.status(400).json(err);
+    }   
+});
+ 
+
 module.exports = router;
