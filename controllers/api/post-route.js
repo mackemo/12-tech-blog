@@ -30,13 +30,17 @@ router.get('/:id', async (req, res) => {
             // displays post title and text
             include: [
                 {
+                    model: User,
+                    attributes: ['first_name', 'last_name']
+                },
+                {
                     model: Comment,
                     attributes: ['comment_text'],
                     // includes comments on posts
                     include: [
                         {
                             model: User,
-                            attributes: ['first_name', 'last_name']
+                            attributes: ['username']
                             // includes the user's names that commented
                         }
                     ]
