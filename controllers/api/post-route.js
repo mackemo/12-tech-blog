@@ -6,6 +6,7 @@ const { User, Post, Comment } = require('../../models');
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
+            // displays all posts with usernames that posted
             attributes: ['post_title', 'post_text'],
             include: [
                 {
@@ -58,6 +59,22 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
+// --------create post -----------------
+router.post('/create', async (req, res) => {
+    try {
+        const newPost = await Post.create({
+            post_title: req.body.post_title,
+            post_text: req.body.post_text,
+        });
+
+        res.status(200).json(newPost);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 
 
 module.exports = router;
