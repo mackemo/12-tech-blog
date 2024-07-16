@@ -76,5 +76,30 @@ router.post('/create', async (req, res) => {
 });
 
 
+// ------update post ------------------
+router.put('/edit', async (req, res) => {
+    try {
+        const postData = await Post.update({
+            post_title: req.body.post_title,
+            post_text: req.body.post_text,
+        }, 
+        {
+            where: {
+                id: req.params.id
+            }
+        });
+
+        if (!postData) {
+            res.status(404).json({ message: "Cannot find post!" });
+            return;
+          }
+
+        res.status(200).json(postData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
 
 module.exports = router;
