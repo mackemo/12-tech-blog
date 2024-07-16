@@ -62,7 +62,7 @@ router.get('/:id', async (req, res) => {
 
 
 // --------create post -----------------
-router.post('/create', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const newPost = await Post.create({
             post_title: req.body.post_title,
@@ -78,7 +78,7 @@ router.post('/create', async (req, res) => {
 
 
 // ------update post ------------------
-router.put('/edit/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         // update post on title and text 
         const postData = await Post.update({
