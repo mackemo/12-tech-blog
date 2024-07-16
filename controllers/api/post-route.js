@@ -67,6 +67,7 @@ router.post('/create', async (req, res) => {
         const newPost = await Post.create({
             post_title: req.body.post_title,
             post_text: req.body.post_text,
+            user_id: req.session.user_id
         });
 
         res.status(200).json(newPost);
@@ -77,7 +78,7 @@ router.post('/create', async (req, res) => {
 
 
 // ------update post ------------------
-router.put('/edit', async (req, res) => {
+router.put('/edit/:id', async (req, res) => {
     try {
         // update post on title and text 
         const postData = await Post.update({
