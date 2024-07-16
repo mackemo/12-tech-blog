@@ -79,6 +79,7 @@ router.post('/create', async (req, res) => {
 // ------update post ------------------
 router.put('/edit', async (req, res) => {
     try {
+        // update post on title and text 
         const postData = await Post.update({
             post_title: req.body.post_title,
             post_text: req.body.post_text,
@@ -92,7 +93,7 @@ router.put('/edit', async (req, res) => {
         if (!postData) {
             res.status(404).json({ message: "Cannot find post!" });
             return;
-          }
+        }
 
         res.status(200).json(postData);
     } catch (err) {
@@ -100,6 +101,28 @@ router.put('/edit', async (req, res) => {
     }
 });
 
+
+// ------delete post ------------------
+router.delete('/:id', async (req, res) => {
+    try {
+        // delete post based off id
+        const postData = await Post.destroy({
+            where: {
+                id: req.params.id,
+                user_id: req.session.user_id,
+            }
+        });
+
+        if (!postData) {
+            res.status(404).json({ message: "Cannot find post!" });
+            return;
+        }
+
+        res.status(200).json(postData);
+    } catch (err) {
+        res.status(400).json(err);
+    }   
+});
 
 
 module.exports = router;
