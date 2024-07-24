@@ -72,11 +72,53 @@ router.get('/dashboard', async (req, res) => {
 });
 
 
+// --------Single Post ------------
+router.get('/single-post/:id', async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id, {
+            attributes: ['post_title', 'post_text'],
+            // displays post title and text
+            include: [
+                {
+                    model: User,
+                    attributes: ['first_name', 'last_name']
+                },
+                {
+                    model: Comment,
+                    attributes: ['comment_text'],
+                    // includes comments on posts
+                    include: [
+                        {
+                            model: User,
+                            attributes: ['username']
+                            // includes the user's names that commented
+                        }
+                    ]
+                }
+            ]
+        });
+
+        if (!postData) {
+            res.status(404).json({ message: 'Post not found' });
+            return;
+        }
+
+        // render the post to single post page
+        res.render('singlepost', {
+            post,
+            loggedIn: req.session.loggedIn,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
 // ---------Create Post -----------------
-router.get("/create-post", async (req, res) => {
+router.get('/create-post', async (req, res) => {
     try {
         // render create post page
-        res.render("createpost", {
+        res.render('createpost', {
             loggedIn: req.session.loggedIn,
         });
     } catch (err) {
@@ -86,7 +128,7 @@ router.get("/create-post", async (req, res) => {
 
 
 // ---------Edit Post -----------------
-router.get(`/edit-post/:id`, async (req, res) => {
+router.get('/edit-post/:id', async (req, res) => {
     try {
         // find specific post
         const postData = await Post.findByPk(req.params.id);
@@ -99,7 +141,7 @@ router.get(`/edit-post/:id`, async (req, res) => {
         const post = postData.get({ plain: true });
         
         // render edit post page
-        res.render("editpost", {
+        res.render('editpost', {
             post,
             loggedIn: req.session.loggedIn,
         });
@@ -110,13 +152,13 @@ router.get(`/edit-post/:id`, async (req, res) => {
 
 
 // ---------Login------------------
-router.get("/login", (req, res) => {
+router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
       res.redirect("/");
       return;
     }
   
-    res.render("login");
+    res.render('login');
 });
 
 
