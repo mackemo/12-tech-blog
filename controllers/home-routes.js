@@ -72,6 +72,43 @@ router.get('/dashboard', async (req, res) => {
 });
 
 
+// ---------Create Post -----------------
+router.get("/create-post", async (req, res) => {
+    try {
+        // render create post page
+        res.render("createpost", {
+            loggedIn: req.session.loggedIn,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
+// ---------Edit Post -----------------
+router.get(`/edit-post/:id`, async (req, res) => {
+    try {
+        // find specific post
+        const postData = await Post.findByPk(req.params.id);
+  
+        if (!postData) {
+            res.status(404).json({ message: 'Post not found' });
+            return;
+        }
+  
+        const post = postData.get({ plain: true });
+        
+        // render edit post page
+        res.render("editpost", {
+            post,
+            loggedIn: req.session.loggedIn,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
 // ---------Login------------------
 router.get("/login", (req, res) => {
     if (req.session.loggedIn) {
