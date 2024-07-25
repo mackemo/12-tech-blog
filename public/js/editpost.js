@@ -16,11 +16,11 @@ const editPostFormHandler = async (event) => {
         window.location.toString().split('/').length - 1
     ];
 
-    // if both included, fetch the post route
+    // if both included, fetch the put route
     if (title && text) {
         const response = await fetch(`/api/posts/${id}`, {
-            method: 'POST',
-            body: JSON.stringify({ title, text }),
+            method: 'PUT',
+            body: JSON.stringify({ id, title, text }),
             headers: { 'Content-Type': 'application/json' },
         });
         
