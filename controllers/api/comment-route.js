@@ -19,31 +19,6 @@ router.post('/', async (req, res) => {
 });
 
 
-// ------update comment ------------------
-router.put('/:id', async (req, res) => {
-    try {
-        // update comment text 
-        const commentData = await Comment.update({
-            comment_text: req.body.comment_text
-        }, 
-        {
-            where: {
-                id: req.params.id
-            }
-        });
-
-        if (!commentData) {
-            res.status(404).json({ message: "Cannot find comment!" });
-            return;
-        }
-
-        res.status(200).json(commentData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-
 // ------delete comment ------------------
 router.delete('/:id', async (req, res) => {
     try {
