@@ -1,0 +1,30 @@
+<main class="your-posts">
+    <div class="container">
+        <div class="row justify-content-center">
+            <h2 class="title2">Your Posts</h2>
+
+            <!-- add post button -->
+            <div class="mb-3">
+                <a href="/dashboard/create/"><button id="create-post" class="btn btn-light col-md-2">+New Post</button></a>
+            </div>
+
+            <!-- posts -->
+            {{#each posts as |post| }}
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="card col-md-8 mt-3 mb-3">
+                            <h5 class="card-header"><a href="/posts/{{post.id}}">{{post.post_title}}</a></h5>
+                            <p class="card-text">{{post.post_text}}</p>
+                            <h6> Created by: {{post.user.username}}</h6>
+
+                            <a href="/api/comments/{{post.id}}" class="card-link">Comment</a>
+                            <a href="/api/posts/{{post.id}}" class="card-link">View</a>
+                            <a id="" class="card-link">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+
+        </div>
+    </div> 
+</main>
