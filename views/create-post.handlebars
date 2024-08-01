@@ -1,0 +1,21 @@
+{{!-- new post form --}}
+<form>
+    <div class="container">
+        <div class="row justify-content-center">
+            <h2 class="title2">Create Post</h2>
+
+            {{!-- title and text --}}
+            <div class="mb-3">
+                <label for="title" class="title-label">Title:</label>
+                <textarea class="form-control" name="title" id="title"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="text" class="text-label">Text:</label>
+                <textarea class="form-control" name="text" id="text"></textarea>
+            </div>
+
+            {{!-- add post button --}}
+            <button type="submit" id="add-post" class="btn btn-light col-md-2">+New Post</button>
+        </div>
+    </div>
+</form>
