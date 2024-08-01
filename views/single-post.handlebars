@@ -17,7 +17,18 @@
                             <a href="/edit-post/{{post.id}}" class="btn btn-light col-md-2">Edit Post</a>
                         </div>
 
-                        <!-- comment text -->
+                        {{!-- comments on post --}}
+                        <div>
+                            <h6>Comments</h6>
+                            {{#each post.comments as |comment| }}
+                                <div class="comment">
+                                    <p>{{comment.comment_text}}</p>
+                                    <h6>By: {{comment.user.username}}</h6>
+                                </div>
+                            {{/each}}
+                        </div>
+
+                        <!-- comment text input-->
                         <div class="mb-3">
                             <label for="comment" class="comment-label">Comment</label>
                             <textarea class="form-control" name="comment" id="comment"></textarea>
