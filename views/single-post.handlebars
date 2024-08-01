@@ -1,0 +1,19 @@
+{{!-- single post page --}}
+<div class="container">
+    <div class="row justify-content-center">
+
+        <!-- posts -->
+        {{#each posts as |post| }}
+            {{> posts}}
+        {{/each}}
+
+        <!-- comment text -->
+        <div class="mb-3">
+            <label for="comment" class="comment-label">Comment</label>
+            <textarea class="form-control" name="comment" id="comment"></textarea>
+        </div>
+
+        {{!-- add comment button --}}
+        <button type="submit" id="add-comment" class="btn btn-light col-md-2">+Comment</button>
+    </div>
+</div>

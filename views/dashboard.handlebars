@@ -1,19 +1,17 @@
 {{!-- dashboard renders your posts --}}
-<main class="your-posts">
-    <div class="container">
-        <div class="row justify-content-center">
-            <h2 class="title2">Your Posts</h2>
+<div class="container">
+    <div class="row justify-content-center">
+        <h2 class="title2">Your Posts</h2>
 
-            <!-- add post button -->
-            <div class="mb-3">
-                <a href="/create-post/" class="btn btn-light col-md-2">+New Post</a>
-            </div>
-
-            <!-- posts -->
-            {{#each posts as |post| }}
-                {{> posts}}
-            {{/each}}
-
+        <!-- add post button -->
+        <div class="mb-3">
+            <a href="/create-post/" class="btn btn-light col-md-2">+New Post</a>
         </div>
-    </div> 
-</main>
+
+        <!-- posts -->
+        {{#each posts as |post| }}
+            {{> posts}}
+        {{/each}}
+
+    </div>
+</div> 

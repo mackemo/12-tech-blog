@@ -18,7 +18,7 @@ const createCommentFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' },
         });
         
-        // relaod page
+        // reload page
         if (response.ok) {
             document.location.reload();
         } else {
