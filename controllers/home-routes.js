@@ -15,7 +15,8 @@ router.get('/', async (req, res) => {
                     as: 'author',
                     attributes: ['username'],
                 }
-            ]
+            ],
+            order: [["post_date", "DESC"]]
         });
         const posts = postData.map((post) => post.get({ plain: true }));
 
@@ -57,7 +58,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
                         }
                     ]
                 }
-            ]
+            ],
+            order: [["post_date", "DESC"]]
         })
         const posts = postData.map((post) => post.get({ plain: true }));
 
