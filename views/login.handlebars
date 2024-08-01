@@ -1,8 +1,10 @@
+{{!-- login form --}}
 <form>
     <div class="container">
         <div class="row justify-content-center">
             <h2 class="title2">Log In</h2>
-                
+
+             {{!--username and password  --}}
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username">
@@ -13,6 +15,7 @@
                 <input type="password" class="form-control" id="password">
             </div>
 
+            {{!-- login or signup --}}
             <button type="submit" class="btn btn-light col-md-6" id="login">Login</button>
             <a class="btn btn-light col-md-6" href="/signup">Sign Up</a>
         </div>
