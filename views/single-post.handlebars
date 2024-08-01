@@ -1,6 +1,7 @@
 {{!-- single post page --}}
 <div class="container">
     <div class="row justify-content-center">
+        <h3 class="title2">{{user.first_name}} {{user.last_name}}</h3>
 
         <!-- posts -->
         {{#each posts as |post| }}
@@ -13,7 +14,7 @@
 
                         {{!-- edit post button --}}
                         <div class="mb-3">
-                            <a href="/edit-post/" class="btn btn-light col-md-2">Edit Post</a>
+                            <a href="/edit-post/{{post.id}}" class="btn btn-light col-md-2">Edit Post</a>
                         </div>
 
                         <!-- comment text -->
