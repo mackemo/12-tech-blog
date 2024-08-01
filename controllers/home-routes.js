@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
+const withAuth = require('../utils/auth');
 
 
 // ---------Homepage -----------------
@@ -31,7 +32,7 @@ router.get('/', async (req, res) => {
 
 
 // ---------Dashboard -----------------
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
             where: {
@@ -115,7 +116,7 @@ router.get('/single-post/:id', async (req, res) => {
 
 
 // ---------Create Post -----------------
-router.get('/create-post', async (req, res) => {
+router.get('/create-post', withAuth, async (req, res) => {
     try {
         // render create post page
         res.render('createpost', {
@@ -128,7 +129,7 @@ router.get('/create-post', async (req, res) => {
 
 
 // ---------Edit Post -----------------
-router.get('/edit-post/:id', async (req, res) => {
+router.get('/edit-post/:id', withAuth, async (req, res) => {
     try {
         // find specific post
         const postData = await Post.findByPk(req.params.id);

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 
 // ----retrieve all posts with usernames-------------------------
@@ -62,7 +63,7 @@ router.get('/:id', async (req, res) => {
 
 
 // --------create post -----------------
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const newPost = await Post.create({
             post_title: req.body.post_title,
@@ -78,7 +79,7 @@ router.post('/', async (req, res) => {
 
 
 // ------update post ------------------
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
         // update post on title and text 
         const postData = await Post.update({
@@ -104,7 +105,7 @@ router.put('/:id', async (req, res) => {
 
 
 // ------delete post ------------------
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
         // delete post based off id
         const postData = await Post.destroy({
