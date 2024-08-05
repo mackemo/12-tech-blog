@@ -15,8 +15,8 @@ const createCommentFormHandler = async (event) => {
         const response = await fetch('/api/comments/', {
             method: 'POST',
             body: JSON.stringify({
-                postId: window.location.pathname.split('/').pop(),
-                comment
+                post_id: window.location.pathname.split('/').pop(),
+                comment_text: comment
             }),
             headers: { 'Content-Type': 'application/json' },
         });
@@ -25,10 +25,10 @@ const createCommentFormHandler = async (event) => {
         if (response.ok) {
             document.location.reload();
         } else {
-            alert('Failed to create post');
+            alert('Failed to comment');
         }
     }
 };
 
 // on clicking comment, function runs
-document.querySelector('#add-comment').addEventListener('submit', createCommentFormHandler);
+document.querySelector('#add-comment').addEventListener('click', createCommentFormHandler);
