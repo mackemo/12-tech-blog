@@ -11,9 +11,15 @@
                     <p class="card-text">{{post.post_text}}</p>
                     <h6>Created by: {{post.user.username}} at {{formatDate post.post_date 'MMMM dd, yyyy'}}</h6>
 
-                    {{!-- edit post button --}}
-                    <div class="mb-3">
-                        <a href="/edit-post/{{post.id}}" class="btn btn-light col-md-2">Edit Post</a>
+                    <div class="row mb-3">
+                        {{!-- edit post button --}}
+                        <div class="col">
+                            <a href="/edit-post/{{post.id}}" class="btn btn-light col-md-6">Edit Post</a>
+                        </div>
+                        {{!-- delete post button --}}
+                        <div class="col">
+                            <button type="button" id="delete-post" class="btn btn-light col-md-6">Delete Post</button>
+                        </div>
                     </div>
 
                     {{!-- comments on post --}}
@@ -43,3 +49,4 @@
 </div>
 
 <script src="/js/add-comment.js"></script>
+<script src="/js/delete-post.js"></script>
