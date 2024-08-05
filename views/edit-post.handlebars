@@ -7,11 +7,11 @@
             {{!-- title and text --}}
             <div class="mb-3">
                 <label for="edit-title" class="title-label">Title:</label>
-                <textarea class="form-control" name="edit-title" id="edit-title"></textarea>
+                <textarea class="form-control" name="edit-title" id="edit-title">{{post.post_title}}</textarea>
             </div>
             <div class="mb-3">
                 <label for="edit-content" class="content-label">Text:</label>
-                <textarea class="form-control" name="edit-content" id="edit-content"></textarea>
+                <textarea class="form-control" name="edit-content" id="edit-content">{{post.post_text}}</textarea>
             </div>
 
             {{!-- save button --}}
