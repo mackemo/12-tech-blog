@@ -44,7 +44,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['comment_text'],
                     // includes comments on posts
                     include: [
                         {
@@ -83,7 +82,6 @@ router.get('/single-post/:id', async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['comment_text'],
                     // includes comments on posts
                     include: [
                         {
