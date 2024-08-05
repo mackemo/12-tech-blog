@@ -29,7 +29,7 @@ The process included creating a schema and User, Post, and Comment models. The P
 
 
 ## Links
-Link to site: https://one2-tech-blog.onrender.com/
+Link to site: https://tech-blog-gxbq.onrender.com/
 
 
 ## Installation
