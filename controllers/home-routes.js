@@ -73,7 +73,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 // --------Single Post ------------
 router.get('/single-post/:id', async (req, res) => {
-    console.log('Fetching post with ID:', req.params.id)
     try {
         const postData = await Post.findByPk(req.params.id, {
             // displays post title and text
