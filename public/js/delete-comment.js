@@ -1,26 +1,27 @@
 // deleting a comment
 const deleteComment = async (event) => {
+    if (!event.target.matches('.delete-comment')) return;
     event.preventDefault();
     
     // grab comment id
-    const id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ];
+    const id = event.target.getAttribute('data-id');
+    console.log(`Attempting to delete comment with ID: ${id}`);
 
     // fetch delete route
     const response = await fetch(`/api/comments/${id}`, {
         method: 'DELETE',
-        body: JSON.stringify({ id }),
         headers: { 'Content-Type': 'application/json' },
     });
         
-        // go to dashboard
+        // reload page
         if (response.ok) {
-            document.location.replace('/dashboard');
+            document.location.reload();
         } else {
             alert('Failed to delete comment');
         }
 };
 
-// on clicking delete, function runs
-document.querySelector('#delete-comment').addEventListener('submit', deleteComment);
+// on clicking delete, function runs for each button
+document.querySelectorAll('.delete-comment').forEach(button => {
+    button.addEventListener('click', deleteComment);
+});
