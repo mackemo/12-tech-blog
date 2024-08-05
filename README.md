@@ -19,21 +19,17 @@ The fourteenth challenge assignment from a bootcamp where the task was to build,
 -[Acknowledgement](#Acknowledgement)
 -[Questions](#Questions)
 
-<img src="./assets/"/>
-
-<img src="./assets/"/>
-
-<img src="./assets/"/>
-
-<img src="./assets/"/>
-
+<img src="./public/images/ss1.png"/>
+<img src="./public/images/ss2.png"/>
+<img src="./public/images/ss3.png"/>
+<img src="./public/images/ss4.png"/>
 
 ## Process
 The process included creating a schema and User, Post, and Comment models. The Post and Comment models included date timestamps and the dates were formatted with a helper from util folder. All of the models were seeded with data from the seeds folder. The server routes were created from scratch for CRUD operations on users, comments, and posts. An authentication helper in the utils folder was incorporated into some of the routes to ensure user is logged in before hitting certain routes. The home-routes.js file rendered all of the pages of the application. The pages were created initially with html then transferred to handlebar syntax. Front-end js files fetched each of the routes when called upon to perform the operations when necessary. A connection file incorporated Sequelize for the database and server.js linked express, sequelize, and handlebars together.
 
 
 ## Links
-Link to site: 
+Link to site: https://one2-tech-blog.onrender.com/
 
 
 ## Installation
