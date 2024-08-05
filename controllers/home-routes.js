@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
             order: [["post_date", "DESC"]]
         });
         const posts = postData.map((post) => post.get({ plain: true }));
-
+        console.log(req.session.loggedIn);
         // render to homepage
         res.render('homepage', {
             posts,
