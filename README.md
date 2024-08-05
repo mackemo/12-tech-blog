@@ -1,4 +1,4 @@
-# 13-social-network
+# 12-tech-blog
 
 [![MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   
