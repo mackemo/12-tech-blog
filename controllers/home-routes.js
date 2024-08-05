@@ -119,7 +119,7 @@ router.get('/single-post/:id', async (req, res) => {
 router.get('/create-post', withAuth, async (req, res) => {
     try {
         // render create post page
-        res.render('createpost', {
+        res.render('create-post', {
             loggedIn: req.session.loggedIn,
         });
     } catch (err) {
@@ -142,7 +142,7 @@ router.get('/edit-post/:id', withAuth, async (req, res) => {
         const post = postData.get({ plain: true });
         
         // render edit post page
-        res.render('editpost', {
+        res.render('edit-post', {
             post,
             loggedIn: req.session.loggedIn,
         });

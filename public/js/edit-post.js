@@ -4,7 +4,7 @@ const editPostFormHandler = async (event) => {
     
     // grab title and text
     const title = document.querySelector('#edit-title').value;
-    const text = document.querySelector('#edit-text').value;
+    const text = document.querySelector('#edit-content').value;
 
     // if neither inputted, alert
     if (!title || !text) {
@@ -12,9 +12,7 @@ const editPostFormHandler = async (event) => {
     }
     
     // grab post id
-    const id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ];
+    const id = window.location.toString().split('/').pop();
 
     // if both included, fetch the put route
     if (title && text) {
@@ -34,4 +32,4 @@ const editPostFormHandler = async (event) => {
 };
 
 // on clicking save, function runs
-document.querySelector('#save-post').addEventListener('submit', editPostFormHandler);
+document.querySelector('#edit-post-form').addEventListener('submit', editPostFormHandler);

@@ -3,14 +3,11 @@ const deletePost = async (event) => {
     event.preventDefault();
     
     // grab post id
-    const id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ];
+    const id = window.location.toString().split('/').pop();
 
     // fetch delete route
     const response = await fetch(`/api/posts/${id}`, {
         method: 'DELETE',
-        body: JSON.stringify({ id }),
         headers: { 'Content-Type': 'application/json' },
     });
         
@@ -23,4 +20,4 @@ const deletePost = async (event) => {
 };
 
 // on clicking delete, function runs
-document.querySelector('#delete-post').addEventListener('submit', deletePost);
+document.querySelector('#delete-post').addEventListener('click', deletePost);
