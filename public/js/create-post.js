@@ -15,7 +15,7 @@ const createPostFormHandler = async (event) => {
     if (title && text) {
         const response = await fetch('/api/posts/', {
             method: 'POST',
-            body: JSON.stringify({ title, text }),
+            body: JSON.stringify({ post_title: title, post_text: text }),
             headers: { 'Content-Type': 'application/json' },
         });
         
@@ -29,4 +29,4 @@ const createPostFormHandler = async (event) => {
 };
 
 // on clicking create, function runs
-document.querySelector('#add-post').addEventListener('submit', createPostFormHandler);
+document.querySelector('.create-post-form').addEventListener('submit', createPostFormHandler);

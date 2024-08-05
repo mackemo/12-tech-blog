@@ -113,7 +113,7 @@ router.post('/login', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.username = userData.username;
-            req.session.logged_in = true;
+            req.session.loggedIn = true;
         
         res.json({ user: userData, message: 'You are now logged in!' });
     });
@@ -125,9 +125,9 @@ router.post('/login', async (req, res) => {
 
 
 // -----user logout----------
-router.post('/logout', (req, res) => {
+router.post('/logout', async (req, res) => {
     // destroys user session (logging out)
-    if (req.session.logged_in) {
+    if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
         });
@@ -136,26 +136,5 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 })
-
-
-// -----delete user------------------
-router.delete('/:id', async (req, res) => {
-    // find specific user session id
-    const userId = req.session.user_id;
-    
-    try {
-        // removes user by id
-        await User.destroy({
-            where: {
-                id: userId
-            }
-        });
-
-        res.status(200).json("Applicant deleted!");
-    } catch (err) {
-        res.status(400).json(err);
-    }   
-});
- 
 
 module.exports = router;

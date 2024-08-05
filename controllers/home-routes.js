@@ -8,18 +8,16 @@ router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
             // displays all posts with usernames that posted
-            attributes: ['post_title', 'post_text'],
             include: [
                 {
                     model: User,
-                    as: 'author',
                     attributes: ['username'],
                 }
             ],
             order: [["post_date", "DESC"]]
         });
         const posts = postData.map((post) => post.get({ plain: true }));
-
+        
         // render to homepage
         res.render('homepage', {
             posts,
@@ -39,11 +37,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
             where: {
                 user_id: req.session.user_id
             },
-            attributes: ['post_title', 'post_text'],
             include: [
                 {
                     model: User,
-                    as: 'author',
                     attributes: ['username']
                 },
                 {
@@ -79,7 +75,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
 router.get('/single-post/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
-            attributes: ['post_title', 'post_text'],
             // displays post title and text
             include: [
                 {
@@ -105,10 +100,13 @@ router.get('/single-post/:id', async (req, res) => {
             res.status(404).json({ message: 'Post not found' });
             return;
         }
+        const post = postData.get({ plain: true });
+        const userId = req.session.userId;
 
         // render the post to single post page
-        res.render('singlepost', {
+        res.render('single-post', {
             post,
+            userId,
             loggedIn: req.session.loggedIn,
         });
     } catch (err) {
@@ -121,7 +119,7 @@ router.get('/single-post/:id', async (req, res) => {
 router.get('/create-post', withAuth, async (req, res) => {
     try {
         // render create post page
-        res.render('createpost', {
+        res.render('create-post', {
             loggedIn: req.session.loggedIn,
         });
     } catch (err) {
@@ -144,7 +142,7 @@ router.get('/edit-post/:id', withAuth, async (req, res) => {
         const post = postData.get({ plain: true });
         
         // render edit post page
-        res.render('editpost', {
+        res.render('edit-post', {
             post,
             loggedIn: req.session.loggedIn,
         });
