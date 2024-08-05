@@ -3,7 +3,7 @@
         <div class="card col-md-8 mt-3 mb-3">
             <h5 class="card-header"><a href="/posts/{{post.id}}">{{post.post_title}}</a></h5>
             <p class="card-text">{{post.post_text}}</p>
-            <h6> Created by: {{post.author.username}} at {{post.post_date}}</h6>
+            <h6>Created by: {{post.author.username}} at {{formatDate post.post_date 'MMMM dd, yyyy'}}</h6>
         </div>
     </div>
 </div>

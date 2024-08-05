@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
             // displays all posts with usernames that posted
-            attributes: ['post_title', 'post_text'],
+            attributes: ['post_title', 'post_text', 'post_date'],
             include: [
                 {
                     model: User,
@@ -39,7 +39,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
             where: {
                 user_id: req.session.user_id
             },
-            attributes: ['post_title', 'post_text'],
+            attributes: ['post_title', 'post_text', 'post_date'],
             include: [
                 {
                     model: User,
@@ -79,7 +79,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 router.get('/single-post/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
-            attributes: ['post_title', 'post_text'],
+            attributes: ['post_title', 'post_text', 'post_date'],
             // displays post title and text
             include: [
                 {
