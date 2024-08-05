@@ -28,7 +28,7 @@
                         {{#each post.comments as |comment| }}
                             <div class="comment">
                                 <p>{{comment.comment_text}}</p>
-                                <h6>By: {{comment.user.username}}</h6>
+                                <h6>By: {{comment.user.username}} at {{formatDate comment.comment_date 'MMMM dd, yyyy'}}</h6>
                                 <button type="button" class="delete-comment btn btn-light col-md-4" data-id="{{comment.id}}">Delete Comment</button>
                             </div>
                         {{/each}}
