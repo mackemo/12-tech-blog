@@ -1,46 +1,44 @@
 {{!-- single post page --}}
 <div class="container">
     <div class="row justify-content-center">
-        <h3 class="title2">{{user.first_name}} {{user.last_name}}</h3>
+        <h3 class="title2">{{post.user.first_name}} {{post.user.last_name}}</h3>
 
         <!-- posts -->
-        {{#each posts as |post| }}
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="card col-md-8 mt-3 mb-3">
-                        <h5 class="card-header"><a href="/posts/{{post.id}}">{{post.post_title}}</a></h5>
-                        <p class="card-text">{{post.post_text}}</p>
-                        <h6> Created by: {{post.user.username}} at {{post.post_date}}</h6>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="card col-md-8 mt-3 mb-3">
+                    <h5 class="card-header">{{post.post_title}}</h5>
+                    <p class="card-text">{{post.post_text}}</p>
+                    <h6>Created by: {{post.user.username}} at {{formatDate post.post_date 'MMMM dd, yyyy'}}</h6>
 
-                        {{!-- edit post button --}}
-                        <div class="mb-3">
-                            <a href="/edit-post/{{post.id}}" class="btn btn-light col-md-2">Edit Post</a>
-                        </div>
-
-                        {{!-- comments on post --}}
-                        <div>
-                            <h6>Comments</h6>
-                            {{#each post.comments as |comment| }}
-                                <div class="comment">
-                                    <p>{{comment.comment_text}}</p>
-                                    <h6>By: {{comment.user.username}}</h6>
-                                </div>
-                            {{/each}}
-                        </div>
-
-                        <!-- comment text input-->
-                        <div class="mb-3">
-                            <label for="comment" class="comment-label">Comment</label>
-                            <textarea class="form-control" name="comment" id="comment"></textarea>
-                        </div>
-
-                        {{!-- add comment button --}}
-                        <button type="submit" id="add-comment" class="btn btn-light col-md-2">+Comment</button>
-
+                    {{!-- edit post button --}}
+                    <div class="mb-3">
+                        <a href="/edit-post/{{post.id}}" class="btn btn-light col-md-2">Edit Post</a>
                     </div>
+
+                    {{!-- comments on post --}}
+                    <div>
+                        <h6>Comments</h6>
+                        {{#each post.comments as |comment| }}
+                            <div class="comment">
+                                <p>{{comment.comment_text}}</p>
+                                <h6>By: {{comment.user.username}}</h6>
+                            </div>
+                        {{/each}}
+                    </div>
+
+                    <!-- comment text input-->
+                    <div class="mb-3">
+                        <label for="comment" class="comment-label">Comment</label>
+                        <textarea class="form-control" name="comment" id="comment"></textarea>
+                    </div>
+
+                    {{!-- add comment button --}}
+                    <button type="submit" id="add-comment" class="btn btn-light col-md-2">+Comment</button>
+
                 </div>
             </div>
-        {{/each}}
+        </div>
     </div>
 </div>
 

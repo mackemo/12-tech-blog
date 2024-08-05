@@ -8,11 +8,9 @@ router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
             // displays all posts with usernames that posted
-            attributes: ['post_title', 'post_text', 'post_date'],
             include: [
                 {
                     model: User,
-                    as: 'author',
                     attributes: ['username'],
                 }
             ],
@@ -39,11 +37,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
             where: {
                 user_id: req.session.user_id
             },
-            attributes: ['post_title', 'post_text', 'post_date'],
             include: [
                 {
                     model: User,
-                    as: 'author',
                     attributes: ['username']
                 },
                 {
@@ -77,9 +73,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 // --------Single Post ------------
 router.get('/single-post/:id', async (req, res) => {
+    console.log('Fetching post with ID:', req.params.id)
     try {
         const postData = await Post.findByPk(req.params.id, {
-            attributes: ['post_title', 'post_text', 'post_date'],
             // displays post title and text
             include: [
                 {
@@ -105,10 +101,13 @@ router.get('/single-post/:id', async (req, res) => {
             res.status(404).json({ message: 'Post not found' });
             return;
         }
+        const post = postData.get({ plain: true });
+        const userId = req.session.userId;
 
         // render the post to single post page
-        res.render('singlepost', {
+        res.render('single-post', {
             post,
+            userId,
             loggedIn: req.session.loggedIn,
         });
     } catch (err) {

@@ -12,9 +12,12 @@ const createCommentFormHandler = async (event) => {
     
     // if included, fetch the post route
     if (comment) {
-        const response = await fetch('/api/comment/', {
+        const response = await fetch('/api/comments/', {
             method: 'POST',
-            body: JSON.stringify({ comment }),
+            body: JSON.stringify({
+                postId: window.location.pathname.split('/').pop(),
+                comment
+            }),
             headers: { 'Content-Type': 'application/json' },
         });
         
