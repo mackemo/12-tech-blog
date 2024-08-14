@@ -4,7 +4,7 @@
   
 
 ## Description
-The fourteenth challenge assignment from a bootcamp where the task was to build, from scratch, a CMS-style blog site, where developers can publish their blog posts and comment on other developers' posts as well. This application follows the MVC paradigm, utilizes Handlebars.js, Sequelize and express-session for authentication.
+The twelfth challenge assignment from a bootcamp where the task was to build, from scratch, a CMS-style blog site, where developers can publish their blog posts and comment on other developers' posts as well. This application follows the MVC paradigm, utilizes Handlebars.js, Sequelize and express-session for authentication.
 
 
 ## Table of Content
